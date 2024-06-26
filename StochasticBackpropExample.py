@@ -59,9 +59,9 @@ class NeuralNetworkStoBackprop:
         yNew = self.FeedForward(Input_X)
         temp = (y_Correct -yNew )
         temp = temp * temp
-        J = np.average(temp)/float(2)
-        self.dSx = J
-        return J
+        dSx = np.average(temp)/float(2)
+        self.dSx = dSx
+        return dSx
 
     def Compute_Dx(self, Input_X, Correct_y):
 
@@ -85,15 +85,15 @@ class NeuralNetworkStoBackprop:
         iters_ = 0
 
         self.Compute_Dx(Input_X, Correct_y)
-        J = 0
+        dSx = 0
         mt_1 = np.zeros((self.InputHyperParam, self.HiddenLayerParam))
         mt_2 = np.zeros((self.HiddenLayerParam, self.OutputHyperParam))
 
         while Train_condition and iters_ < self.Max_iters:
 
             self.Compute_Dx(Input_X, Correct_y)
-            J = self.Cost(Input_X, Correct_y)
-            self.Lcost.append(J)
+            dSx = self.Cost(Input_X, Correct_y)
+            self.Lcost.append(dSx)
             if self.Verbose == True:
                 print(iters_, " <<<< Iters")
                 print(J, " <<<< cost_Value")
@@ -108,7 +108,7 @@ class NeuralNetworkStoBackprop:
             iters_ = iters_ + 1
         if self.Verbose == True:
             print(iters_, " <<<< Iters")
-            print(J, " <<<< cost_Value")
+            print(dSx, " <<<< cost_Value")
 
     def Predict(self, Input_X):
         M_X2 = np.dot(Input_X, self.W_1)
