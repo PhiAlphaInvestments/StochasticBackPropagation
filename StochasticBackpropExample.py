@@ -43,7 +43,7 @@ class NeuralNetworkStoBackprop:
             c = np.random.uniform(self.A, self.B)
         return -(pow(c, x) * (-1 + pow(c, x)) * np.log(c) ** 2) / (
                     1 + pow(c, x)) ** 3
-    def Plot_Cos(self):
+    def Plot_Cost(self):
         import matplotlib.pyplot as plt
         plt.plot(self.Lcost)
         plt.show()
@@ -185,7 +185,7 @@ def run_test(x_train,y_train,x_test,y_test):
 
 
         NNN.Train(x__, y__)
-        NNN.Plot_Cos()
+        NNN.Plot_Cost()
         print("----")
         print(np.average(NNN.Predict(x__) - y__))
     mse = 0
