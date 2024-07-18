@@ -97,7 +97,7 @@ class NeuralNetworkStoBackprop:
             if self.Verbose == True:
                 print(iters_, " <<<< Iters")
                 print(dSx, " <<<< cost_Value")
-            if J < self.alpha:
+            if dSx < self.alpha:
                 Train_condition = False
 
             mt_1 = self.Beta1 * mt_1 + (1 - self.Beta1) * self.Derivative1
