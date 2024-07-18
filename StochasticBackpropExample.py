@@ -96,7 +96,7 @@ class NeuralNetworkStoBackprop:
             self.Lcost.append(dSx)
             if self.Verbose == True:
                 print(iters_, " <<<< Iters")
-                print(J, " <<<< cost_Value")
+                print(dSx, " <<<< cost_Value")
             if J < self.alpha:
                 Train_condition = False
 
